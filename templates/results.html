@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kết Quả Phân Tích</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="main-container">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="/">
+                    <i class="fas fa-chart-line me-2"></i>Phân Tích Dữ Liệu
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">
+                                <i class="fas fa-home me-1"></i>Trang chủ
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="container-fluid mt-4">
+            <div class="row mb-4">
+                <div class="col">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h1 class="page-title">Kết Quả Phân Tích</h1>
+                        <a href="/" class="btn btn-primary">
+                            <i class="fas fa-upload me-1"></i>Phân tích file khác
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Container -->
+            <div class="charts-container">
+                <!-- Hoạt Động Doanh Nghiệp -->
+                <div class="chart-wrapper">
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h5 class="chart-title">Hoạt Động Doanh Nghiệp</h5>
+                            <div class="chart-actions">
+                                <button class="btn btn-sm btn-outline-secondary" onclick="downloadChart('plot1')">
+                                    <i class="fas fa-download"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="chart-body">
+                            <div id="plot1" class="chart-plot"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phương Thức Thanh Toán -->
+                <div class="chart-wrapper">
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h5 class="chart-title">Phương Thức Thanh Toán</h5>
+                            <div class="chart-actions">
+                                <button class="btn btn-sm btn-outline-secondary" onclick="downloadChart('plot2')">
+                                    <i class="fas fa-download"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="chart-body">
+                            <div id="plot2" class="chart-plot"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dân Số và Internet -->
+                <div class="chart-wrapper">
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h5 class="chart-title">Dân Số và Internet</h5>
+                            <div class="chart-actions">
+                                <button class="btn btn-sm btn-outline-secondary" onclick="downloadChart('plot3')">
+                                    <i class="fas fa-download"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="chart-body">
+                            <div id="plot3" class="chart-plot"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Doanh Thu B2C -->
+                <div class="chart-wrapper">
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h5 class="chart-title">Doanh Thu B2C</h5>
+                            <div class="chart-actions">
+                                <button class="btn btn-sm btn-outline-secondary" onclick="downloadChart('plot4')">
+                                    <i class="fas fa-download"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="chart-body">
+                            <div id="plot4" class="chart-plot"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dự Báo Doanh Thu -->
+                <div class="chart-wrapper">
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h5 class="chart-title">Dự Báo Doanh Thu B2C</h5>
+                            <div class="chart-actions">
+                                <button class="btn btn-sm btn-outline-secondary" onclick="downloadChart('forecast1')">
+                                    <i class="fas fa-download"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="chart-body">
+                            <div id="forecast1" class="chart-plot"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dự Báo Người Dùng -->
+                <div class="chart-wrapper">
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h5 class="chart-title">Dự Báo Người Dùng</h5>
+                            <div class="chart-actions">
+                                <button class="btn btn-sm btn-outline-secondary" onclick="downloadChart('forecast2')">
+                                    <i class="fas fa-download"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="chart-body">
+                            <div id="forecast2" class="chart-plot"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer mt-5">
+        <div class="container text-center py-3">
+            <span class="text-muted">© 2024 Phân Tích Dữ Liệu Doanh Nghiệp</span>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/your-font-awesome-kit.js"></script>
+    
+    <script>
+        // Parse and render charts
+        var plot1 = JSON.parse('{{ plot1 | safe }}');
+        var plot2 = JSON.parse('{{ plot2 | safe }}');
+        var plot3 = JSON.parse('{{ plot3 | safe }}');
+        var plot4 = JSON.parse('{{ plot4 | safe }}');
+        var forecast1 = JSON.parse('{{ forecast1 | safe }}');
+        var forecast2 = JSON.parse('{{ forecast2 | safe }}');
+        
+        // Render all charts
+        Plotly.newPlot('plot1', plot1.data, plot1.layout);
+        Plotly.newPlot('plot2', plot2.data, plot2.layout);
+        Plotly.newPlot('plot3', plot3.data, plot3.layout);
+        Plotly.newPlot('plot4', plot4.data, plot4.layout);
+        Plotly.newPlot('forecast1', forecast1.data, forecast1.layout);
+        Plotly.newPlot('forecast2', forecast2.data, forecast2.layout);
+
+        // Download chart function
+        function downloadChart(chartId) {
+            Plotly.downloadImage(chartId, {
+                format: 'png',
+                height: 600,
+                width: 800,
+                filename: 'chart'
+            });
+        }
+    </script>
+</body>
+</html>

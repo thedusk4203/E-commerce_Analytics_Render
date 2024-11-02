@@ -1,0 +1,8 @@
+Flask
+pandas
+matplotlib
+prophet
+plotly
+statsmodels
+scipy
+numpy
