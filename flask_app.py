@@ -393,4 +393,4 @@ def index():
 
 # Chạy ứng dụng trong môi trường debug
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run
