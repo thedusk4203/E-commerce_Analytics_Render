@@ -1,3 +1,5 @@
+gunicorn
+openpyxl
 Flask
 pandas
 matplotlib
